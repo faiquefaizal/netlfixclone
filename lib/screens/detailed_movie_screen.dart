@@ -56,6 +56,9 @@ class _DetailedMovieScreenState extends State<DetailedMovieScreen> {
       body: FutureBuilder(
           future: detailedscreen,
           builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
             if (snapshot.hasData) {
               var movie = snapshot.data;
               String genresTExt = movie!.genres.map((e) => e.name).join(", ");
@@ -201,7 +204,7 @@ class _DetailedMovieScreenState extends State<DetailedMovieScreen> {
                 ),
               );
             } else {
-              log("snap is empty");
+              log("Movie not found as th snap is empty");
               return SizedBox();
             }
           }),

@@ -24,7 +24,7 @@ class BottomNavigatorBar extends StatelessWidget {
                   text: "Search",
                 ),
                 Tab(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.photo_library_outlined),
                   text: "New & Hot",
                 )
               ],
