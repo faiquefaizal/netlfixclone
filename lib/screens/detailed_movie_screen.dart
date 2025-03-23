@@ -119,10 +119,16 @@ class _DetailedMovieScreenState extends State<DetailedMovieScreen> {
                               SizedBox(
                                 width: 30,
                               ),
-                              Text(
-                                genresTExt,
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 20),
+                              Flexible(
+                                child: Text(
+                                  genresTExt,
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               )
                             ],
                           ),
@@ -131,6 +137,7 @@ class _DetailedMovieScreenState extends State<DetailedMovieScreen> {
                           ),
                           Text(
                             movie.overview,
+                            textAlign: TextAlign.start,
                             maxLines: 7,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(color: Colors.white, fontSize: 18),
@@ -167,10 +174,22 @@ class _DetailedMovieScreenState extends State<DetailedMovieScreen> {
                                                   crossAxisSpacing: 5,
                                                   childAspectRatio: 1.2 / 2),
                                           itemBuilder: (context, index) {
-                                            return CachedNetworkImage(
-                                              imageUrl:
-                                                  "$imagePath${datas.results[index].posterPath}",
-                                              fit: BoxFit.cover,
+                                            return InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            DetailedMovieScreen(
+                                                                movieId: datas
+                                                                    .results[
+                                                                        index]
+                                                                    .id)));
+                                              },
+                                              child: CachedNetworkImage(
+                                                imageUrl:
+                                                    "$imagePath${datas.results[index].posterPath}",
+                                                fit: BoxFit.cover,
+                                              ),
                                             );
                                           })
                                     ],

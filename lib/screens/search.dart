@@ -127,7 +127,7 @@ class _HomeState extends State<SearchScreen> {
                                           width: 15,
                                         ),
                                         SizedBox(
-                                          width: 250,
+                                          width: 200,
                                           child: Text(
                                             data.name,
                                             maxLines: 2,
